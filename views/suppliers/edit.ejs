@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<h1>Edit Supplier</h1>
+
+<% if (errors && errors.length > 0) { %>
+  <div class="alert alert-danger">
+    <ul>
+      <% errors.forEach(function(err){ %>
+        <li><%= err.msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form action="/suppliers/<%= supplier._id %>?_method=PUT" method="POST">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" value="<%= supplier.name %>" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Address</label>
+    <input type="text" name="address" value="<%= supplier.address %>" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input type="text" name="phone" value="<%= supplier.phone %>" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a href="/suppliers" class="btn btn-secondary">Cancel</a>
+</form>
+
+<%- include('../partials/footer') %>
