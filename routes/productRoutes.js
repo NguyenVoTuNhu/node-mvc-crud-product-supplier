@@ -5,6 +5,100 @@ const { body } = require('express-validator');
 
 /**
  * @swagger
+ * /products:
+ *   get:
+ *     tags: [Products]
+ *     summary: Hiển thị trang danh sách sản phẩm (Web)
+ *     responses:
+ *       200:
+ *         description: Trang danh sách sản phẩm
+ *
+ *   post:
+ *     tags: [Products]
+ *     summary: Tạo sản phẩm mới (Web form)
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/x-www-form-urlencoded:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - supplierId
+ *             properties:
+ *               name:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               phone:
+ *                 type: string
+ *               supplierId:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Sản phẩm được tạo thành công
+ */
+
+/**
+ * @swagger
+ * /products/{id}:
+ *   get:
+ *     tags: [Products]
+ *     summary: Hiển thị chi tiết sản phẩm (Web)
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Chi tiết sản phẩm
+ *
+ *   put:
+ *     tags: [Products]
+ *     summary: Cập nhật sản phẩm
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/x-www-form-urlencoded:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               phone:
+ *                 type: string
+ *               supplierId:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Cập nhật thành công
+ *
+ *   delete:
+ *     tags: [Products]
+ *     summary: Xóa sản phẩm
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Xóa thành công
+ */
+
+/**
+ * @swagger
  * tags:
  *   name: Products
  *   description: Product management
